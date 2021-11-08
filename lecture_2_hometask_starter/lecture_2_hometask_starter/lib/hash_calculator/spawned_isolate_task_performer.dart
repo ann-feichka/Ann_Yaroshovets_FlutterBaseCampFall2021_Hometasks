@@ -9,10 +9,10 @@ import '../constants.dart';
 class SpawnedIsolateTaskPerformer implements HeavyTaskPerformer {
 
   late Isolate isolate;
-  late Completer _completer;
+  late Completer<String> _completer;
 
   @override
-  Future doSomeHeavyWork() async {
+  Future<String> doSomeHeavyWork() async {
     _completer = Completer<String>();
 
     try {

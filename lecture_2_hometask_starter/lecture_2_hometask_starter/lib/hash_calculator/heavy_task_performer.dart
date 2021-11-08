@@ -1,3 +1,3 @@
 abstract class HeavyTaskPerformer {
-  Future doSomeHeavyWork();
+  Future<String> doSomeHeavyWork(); //
 }
