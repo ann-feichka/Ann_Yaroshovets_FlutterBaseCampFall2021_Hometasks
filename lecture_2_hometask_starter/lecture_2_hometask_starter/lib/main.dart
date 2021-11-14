@@ -1,64 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:lecture_2_hometask_starter/hash_calculator/compute_heavy_task_performer.dart';
-import 'package:lecture_2_hometask_starter/hash_calculator/heavy_task_performer.dart';
-import 'package:lecture_2_hometask_starter/hash_calculator/main_isolate_task_performer.dart';
-
-import 'hash_calculator/spawned_isolate_task_performer.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc/heavy_task_cubit.dart';
+import 'bloc/heavy_task_cubit_builder.dart';
+import 'heavy_task_state.dart';
 
 void main() {
-  runApp(
-    MyApp(
-      taskPerformer: ComputeHeavyTaskPerformer(),
-    ),
+  runApp(MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({
-    Key? key,
-    required this.taskPerformer,
-  }) : super(key: key);
-
-  final HeavyTaskPerformer taskPerformer;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(
-        title: 'Flutter Demo Home Page',
-        taskPerformer: taskPerformer,
-      ),
+      debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: BlocProvider(
+          create: (context) => HeavyTaskCubit(),
+          child: CalculateHashPage(),
+        )
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    Key? key,
-    required this.title,
-    required this.taskPerformer,
-  }) : super(key: key);
-
-  final String title;
-  final HeavyTaskPerformer taskPerformer;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  String heavyTaskResult = '';
-  bool isPerformingTask = false;
-
+class CalculateHashPage extends StatelessWidget {
+  TextEditingController myController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Calculate Hash Page Bloc'),
       ),
       body: Center(
         child: Padding(
@@ -66,29 +42,35 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'Heavy task result is equal to: $heavyTaskResult',
-                textAlign: TextAlign.center,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                child: TextField(
+                  controller: myController,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    labelText: 'Iteration Count',
+                  ),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],),
               ),
-              isPerformingTask
-                  ? const CircularProgressIndicator()
-                  : ElevatedButton(
-                      onPressed: () async {
-                        setState(() {
-                          isPerformingTask = true;
-                          heavyTaskResult = '';
-                        });
-
-                        final taskResult =
-                            await widget.taskPerformer.doSomeHeavyWork();
-
-                        setState(() {
-                          isPerformingTask = false;
-                          heavyTaskResult = taskResult;
-                        });
-                      },
-                      child: const Text('Perform Heavy Task'),
-                    ),
+              const SizedBox(height: 50,),
+              const Text('Heavy task result is equal to:'),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: HeavyTaskCubitBuilder(
+                  buildPerformState: (context) => _PerformWidget() ,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () => context.read<HeavyTaskCubit>().stopCalculate(),
+                child: const Text('Stop Heavy Task'),
+              ),
+              ElevatedButton(
+                onPressed: () =>
+                    context.read<HeavyTaskCubit>().startCalculate(int.parse(myController.text)),
+                child: const Text('Perform Heavy Task'),
+              ),
             ],
           ),
         ),
@@ -96,3 +78,15 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+class _PerformWidget extends StatelessWidget {
+  const _PerformWidget({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<HeavyTaskCubit,HeavyTaskState>(
+        builder: (context,state){
+          return Text(HeavyTaskPerformState.result);
+        });
+  }
+}
+

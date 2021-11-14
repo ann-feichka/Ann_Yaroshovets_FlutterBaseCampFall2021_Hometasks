@@ -5,13 +5,15 @@ import 'package:lecture_2_hometask_starter/helpers/random_number_hash_calculator
 import '../constants.dart';
 
 class ComputeHeavyTaskPerformer implements HeavyTaskPerformer {
-
-   static String _calculateHash (int count){
-    return RandomNumberHashCalculator().calculateRandomNumberHash(iterationsCount: count);
+  late final int iterationCount;
+  @override
+  Future<String> doSomeHeavyWork(iterationCount) async {
+    return compute<int,String>(RandomNumberHashCalculator().calculateRandomNumberHash,iterationCount);
   }
 
   @override
-  Future<String> doSomeHeavyWork() async {
-    return compute<int,String>(_calculateHash,DefaultIterationsCount);
+  Future<String> stopDoSomeHeavyWork() {
+    // TODO: implement stopDoSomeHeavyWork
+    throw UnimplementedError();
   }
 }

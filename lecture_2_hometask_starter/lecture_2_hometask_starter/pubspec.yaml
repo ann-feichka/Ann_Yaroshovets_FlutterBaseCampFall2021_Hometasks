@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   crypto: ^3.0.1
+  flutter_bloc: ^7.3.3
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -4,8 +4,14 @@ import 'package:lecture_2_hometask_starter/helpers/random_number_hash_calculator
 
 class MainIsolateTaskPerformer implements HeavyTaskPerformer {
   @override
-  Future<String> doSomeHeavyWork() async {
+  Future<String> doSomeHeavyWork(count) async {
     final hashCalculator = RandomNumberHashCalculator();
-    return hashCalculator.calculateRandomNumberHash(iterationsCount: DefaultIterationsCount);
+    return hashCalculator.calculateRandomNumberHash(DefaultIterationsCount);
+  }
+
+  @override
+  Future<String> stopDoSomeHeavyWork() {
+    // TODO: implement stopDoSomeHeavyWork
+    throw UnimplementedError();
   }
 }
