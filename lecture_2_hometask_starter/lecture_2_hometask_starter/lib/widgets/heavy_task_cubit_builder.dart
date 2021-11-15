@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'heavy_task_cubit.dart';
+import '../bloc/heavy_task_cubit.dart';
 import '../heavy_task_state.dart';
 
 class HeavyTaskCubitBuilder extends StatelessWidget {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/heavy_task_cubit.dart';
-import 'bloc/heavy_task_cubit_builder.dart';
+import 'widgets/heavy_task_cubit_builder.dart';
 import 'heavy_task_state.dart';
 
 void main() {
