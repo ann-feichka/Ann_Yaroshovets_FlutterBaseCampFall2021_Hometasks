@@ -8,16 +8,16 @@ import 'widgets/heavy_task_cubit_builder.dart';
 import 'heavy_task_state.dart';
 
 void main() {
-  runApp(MyApp(),
+  runApp(
+    MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -25,8 +25,7 @@ class MyApp extends StatelessWidget {
         home: BlocProvider(
           create: (context) => HeavyTaskCubit(),
           child: CalculateHashPage(),
-        )
-    );
+        ));
   }
 }
 
@@ -45,7 +44,8 @@ class CalculateHashPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: TextField(
                   controller: myController,
                   keyboardType: TextInputType.number,
@@ -54,23 +54,25 @@ class CalculateHashPage extends StatelessWidget {
                   ),
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
-                  ],),
+                  ],
+                ),
               ),
-              const SizedBox(height: 50,),
+              const SizedBox(
+                height: 50,
+              ),
               const Text('Heavy task result is equal to:'),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
-                child: HeavyTaskCubitBuilder(
-                  buildPerformState: (context) => _PerformWidget() ,
-                ),
+                child: HeavyTaskCubitBuilder(),
               ),
               ElevatedButton(
                 onPressed: () => context.read<HeavyTaskCubit>().stopCalculate(),
                 child: const Text('Stop Heavy Task'),
               ),
               ElevatedButton(
-                onPressed: () =>
-                    context.read<HeavyTaskCubit>().startCalculate(int.parse(myController.text)),
+                onPressed: () => context
+                    .read<HeavyTaskCubit>()
+                    .startCalculate(int.parse(myController.text)),
                 child: const Text('Perform Heavy Task'),
               ),
             ],
@@ -80,15 +82,3 @@ class CalculateHashPage extends StatelessWidget {
     );
   }
 }
-
-class _PerformWidget extends StatelessWidget {
-  const _PerformWidget({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<HeavyTaskCubit,HeavyTaskState>(
-        builder: (context,state){
-          return Text(context.read<HeavyTaskCubit>().result);
-        });
-  }
-}
-
