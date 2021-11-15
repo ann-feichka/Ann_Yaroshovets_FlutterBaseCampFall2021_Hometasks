@@ -1,12 +1,11 @@
-
+import 'package:async/async.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../hash_calculator/spawned_isolate_task_performer.dart';
 import '../heavy_task_state.dart';
-import 'package:async/async.dart';
 
-class HeavyTaskCubit extends Cubit<HeavyTaskState>{
-  String result  = '';
+class HeavyTaskCubit extends Cubit<HeavyTaskState> {
   CancelableOperation<String?>? _heavyTaskOperation;
+  String result = '';
   SpawnedIsolateTaskPerformer taskPerformer = SpawnedIsolateTaskPerformer();
   HeavyTaskCubit() : super(HeavyTaskPerformState(''));
   void stopCalculate() async {
