@@ -1,7 +1,8 @@
 abstract class HeavyTaskState {}
 
 class HeavyTaskPerformState extends HeavyTaskState{
-  static String result ='';
+   final String result ;
+   HeavyTaskPerformState(this.result);
 }
 
 class HeavyTaskStoppedState extends HeavyTaskState{}

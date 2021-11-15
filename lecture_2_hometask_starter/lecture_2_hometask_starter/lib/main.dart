@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -85,7 +87,7 @@ class _PerformWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HeavyTaskCubit,HeavyTaskState>(
         builder: (context,state){
-          return Text(HeavyTaskPerformState.result);
+          return Text(context.read<HeavyTaskCubit>().result);
         });
   }
 }

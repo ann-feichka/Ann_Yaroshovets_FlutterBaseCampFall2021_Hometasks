@@ -4,9 +4,9 @@ import '../hash_calculator/spawned_isolate_task_performer.dart';
 import '../heavy_task_state.dart';
 
 class HeavyTaskCubit extends Cubit<HeavyTaskState>{
+  String result  = '';
   SpawnedIsolateTaskPerformer taskPerformer = SpawnedIsolateTaskPerformer();
-  HeavyTaskCubit() : super(HeavyTaskPerformState());
-
+  HeavyTaskCubit() : super(HeavyTaskPerformState(''));
   void stopCalculate() async {
     taskPerformer.stopDoSomeHeavyWork();
     emit(HeavyTaskStoppedState());
@@ -14,7 +14,7 @@ class HeavyTaskCubit extends Cubit<HeavyTaskState>{
 
   void startCalculate(int iterationCount) async {
     emit(HeavyTaskWaitingState());
-    HeavyTaskPerformState.result = await taskPerformer.doSomeHeavyWork(iterationCount);
-    emit(HeavyTaskPerformState());
+    result = await taskPerformer.doSomeHeavyWork(iterationCount);
+    emit(HeavyTaskPerformState(result));
   }
 }
