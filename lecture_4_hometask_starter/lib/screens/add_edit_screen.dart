@@ -22,15 +22,56 @@ class AddEditScreen extends StatefulWidget {
 }
 
 class _AddEditScreenState extends State<AddEditScreen> {
-  String _task;
-  String _note;
-
+  final notesController = TextEditingController();
+  final titleController = TextEditingController();
   bool get isEditing => widget.isEditing;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
-    throw UnimplementedError();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Add Todo"),
+        leading: Icon(Icons.arrow_back_ios),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          print('Title: ${titleController.text} \n Notes: ${notesController.text}');
+        },
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 10.0),
+        child: Column(
+          children: <Widget>[
+            TextField(
+              controller: titleController,
+              decoration: InputDecoration(
+                hintText: "What needs to be done?",
+              ),
+              style: textTheme.headline5,
+            ),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    "Additional Notes...",
+                    style: TextStyle(
+                      color: Theme.of(context).hintColor,
+                    ),
+                  ),
+                )),
+            Spacer(),
+            TextField(
+              controller: notesController,
+              style: textTheme.subtitle1,
+            ),
+            Spacer(flex: 3,),
+          ],
+        ),
+      ),
+    );
   }
 }
