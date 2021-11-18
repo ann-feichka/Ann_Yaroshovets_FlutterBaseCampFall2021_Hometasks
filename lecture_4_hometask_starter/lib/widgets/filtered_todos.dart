@@ -1,10 +1,9 @@
 import 'package:campnotes/helpers/mocks.dart';
-import 'package:flutter/material.dart';
+import 'package:campnotes/widgets/widgets.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:todos_app_core/todos_app_core.dart';
-import 'package:campnotes/widgets/widgets.dart';
-import 'package:campnotes/screens/screens.dart';
 
 class FilteredTodos extends StatelessWidget {
   FilteredTodos({Key key}) : super(key: key);
@@ -29,7 +28,12 @@ class FilteredTodos extends StatelessWidget {
               localizations: localizations,
             ));
           },
-          onTap: () async {},
+          onTap: () async {
+            Navigator.of(context).pushNamed(
+              ArchSampleRoutes.details,
+              arguments: todo.id,
+            );
+          },
           onCheckboxChanged: (_) {},
         );
       },

@@ -24,6 +24,7 @@ class AddEditScreen extends StatefulWidget {
 class _AddEditScreenState extends State<AddEditScreen> {
   final notesController = TextEditingController();
   final titleController = TextEditingController();
+
   bool get isEditing => widget.isEditing;
 
   @override
@@ -38,7 +39,8 @@ class _AddEditScreenState extends State<AddEditScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          print('Title: ${titleController.text} \n Notes: ${notesController.text}');
+          print(
+              'Title: ${titleController.text} \n Notes: ${notesController.text}');
         },
       ),
       body: Padding(
@@ -57,7 +59,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    "Additional Notes...",
+                    ArchSampleLocalizations.of(context).notesHint,
                     style: TextStyle(
                       color: Theme.of(context).hintColor,
                     ),
@@ -68,7 +70,9 @@ class _AddEditScreenState extends State<AddEditScreen> {
               controller: notesController,
               style: textTheme.subtitle1,
             ),
-            Spacer(flex: 3,),
+            Spacer(
+              flex: 3,
+            ),
           ],
         ),
       ),

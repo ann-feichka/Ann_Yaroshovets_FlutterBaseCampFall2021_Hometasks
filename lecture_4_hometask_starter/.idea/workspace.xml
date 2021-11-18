@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:lecture_3" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:lecture_3" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="630070f6-dc3a-4560-96a2-96ca070b529d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/todos_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/stack_navigator_child.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/lecture_4_hometask_starter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lecture_4_hometask_starter.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
@@ -11,11 +50,28 @@
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bloc/models/app_tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bloc/models/app_tab.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/helpers/mocks.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/helpers/mocks.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/add_edit_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/add_edit_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/details_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/details_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/filtered_todos.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/filtered_todos.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/tab_selector.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/tab_selector.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/todos_app_core/lib/src/keys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/todos_app_core/lib/src/keys.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/todos_app_core/lib/src/localization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/todos_app_core/lib/src/localization.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/todos_app_core/lib/src/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/packages/todos_app_core/lib/src/routes.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="20xiLok7iwdz9N0lWpVZSm4XP1W" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -52,22 +108,42 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1476" height="93" key="GridCell.Tab.0.bottom" timestamp="1637067083482">
+    <state x="524" y="234" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1637254106569">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1476" height="93" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1637067083482" />
-    <state width="1476" height="93" key="GridCell.Tab.0.center" timestamp="1637067083105">
+    <state x="524" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1637254106569" />
+    <state width="1476" height="117" key="GridCell.Tab.0.bottom" timestamp="1637258666020">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1476" height="93" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1637067083105" />
-    <state width="1476" height="93" key="GridCell.Tab.0.left" timestamp="1637067083105">
+    <state width="1476" height="117" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1637258666020" />
+    <state width="1476" height="117" key="GridCell.Tab.0.center" timestamp="1637258666020">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1476" height="93" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1637067083105" />
-    <state width="1476" height="93" key="GridCell.Tab.0.right" timestamp="1637067083482">
+    <state width="1476" height="117" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1637258666020" />
+    <state width="1476" height="117" key="GridCell.Tab.0.left" timestamp="1637258666019">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1476" height="93" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1637067083482" />
+    <state width="1476" height="117" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1637258666019" />
+    <state width="1476" height="117" key="GridCell.Tab.0.right" timestamp="1637258666020">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1476" height="117" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1637258666020" />
+    <state x="655" y="389" key="VCS.EditChangelistDialog" timestamp="1637259450395">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="655" y="389" key="VCS.EditChangelistDialog/0.0.1536.864@0.0.1536.864" timestamp="1637259450395" />
   </component>
 </project>
