@@ -25,19 +25,26 @@ class ArchSampleLocalizations {
         context, ArchSampleLocalizations);
   }
 
-  String get todos => Intl.message(
-        'Todos',
-        name: 'todos',
+  String get home => Intl.message(
+        'Home',
+        name: 'home',
         args: [],
         locale: locale.toString(),
       );
 
-  String get stats => Intl.message(
-        'Stats',
-        name: 'stats',
+  String get work => Intl.message(
+        'Work',
+        name: 'work',
         args: [],
         locale: locale.toString(),
       );
+
+  String get leisure => Intl.message(
+    'Leisure',
+    name: 'Leisure',
+    args: [],
+    locale: locale.toString(),
+  );
 
   String get showAll => Intl.message(
         'Show All',

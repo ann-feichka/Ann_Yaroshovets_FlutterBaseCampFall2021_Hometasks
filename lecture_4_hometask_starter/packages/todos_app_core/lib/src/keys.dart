@@ -22,8 +22,9 @@ class ArchSampleKeys {
 
   // Tabs
   static const tabs = Key('__tabs__');
-  static const todoTab = Key('__todoTab__');
-  static const statsTab = Key('__statsTab__');
+  static const homeTab = Key('__homeTab__');
+  static const workTab = Key('__workTab__');
+  static const leisureTab = Key('__leisureTab__');
 
   // Extra Actions
   static const extraActionsButton = Key('__extraActionsButton__');
