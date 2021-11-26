@@ -1,4 +1,5 @@
 import 'package:campnotes/bloc/models/app_tab.dart';
+import 'package:campnotes/data/shared_preferences_storage.dart';
 import 'package:campnotes/widgets/stack_navigator_child.dart';
 import 'package:campnotes/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final activeTab = AppTab.home;
     return WillPopScope(
       onWillPop: () async {
-        final hasPopped = await navigatorKeys[_currentTab].currentState.maybePop();
+        final hasPopped =
+            await navigatorKeys[_currentTab].currentState.maybePop();
 
         if (hasPopped) {
           return false;
@@ -33,11 +34,13 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
+          heroTag: null,
           key: ArchSampleKeys.addTodoFab,
-          onPressed: () {
-            Navigator.pushNamed(context, ArchSampleRoutes.addTodo);
+          onPressed: () async {
+            SharedPreferencesStorage.deleteData("email").whenComplete(() =>
+                Navigator.of(context).pushNamed(ArchSampleRoutes.registration));
           },
-          child: Icon(Icons.add),
+          child: Icon(Icons.logout),
           tooltip: ArchSampleLocalizations.of(context).addTodo,
         ),
         body: Stack(

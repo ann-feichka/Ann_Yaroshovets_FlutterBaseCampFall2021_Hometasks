@@ -30,6 +30,8 @@ dependencies:
   provider: ^6.0.0
   todos_app_core:
     path: packages/todos_app_core/
+  shared_preferences: ^2.0.9
+
 
 dependency_overrides:
 

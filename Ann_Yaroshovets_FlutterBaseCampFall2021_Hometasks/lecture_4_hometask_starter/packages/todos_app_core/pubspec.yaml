@@ -7,7 +7,7 @@ dependencies:
   intl:
   flutter:
     sdk: flutter
-  path_provider:
+#  path_provider:
 
 dev_dependencies:
   intl_translation:

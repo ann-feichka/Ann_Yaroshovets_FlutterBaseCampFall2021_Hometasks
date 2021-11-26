@@ -32,6 +32,49 @@ class ArchSampleLocalizations {
         locale: locale.toString(),
       );
 
+  String get registration => Intl.message(
+    'Registration',
+    name: 'registration',
+    args: [],
+    locale: locale.toString(),
+  );
+
+  String get login => Intl.message(
+    'Login',
+    name: 'login',
+    args: [],
+    locale: locale.toString(),
+  );
+
+
+  String get logout => Intl.message(
+    'Logout',
+    name: 'logout',
+    args: [],
+    locale: locale.toString(),
+  );
+
+  String get email => Intl.message(
+    'Email',
+    name: 'email',
+    args: [],
+    locale: locale.toString(),
+  );
+
+  String get password => Intl.message(
+    'Password',
+    name: 'password',
+    args: [],
+    locale: locale.toString(),
+  );
+
+  String get signUp => Intl.message(
+    'Sign up',
+    name: 'signUp',
+    args: [],
+    locale: locale.toString(),
+  );
+
   String get work => Intl.message(
         'Work',
         name: 'work',
