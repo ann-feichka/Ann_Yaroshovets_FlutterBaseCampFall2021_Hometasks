@@ -1,9 +1,10 @@
 import 'package:campnotes/bloc/models/app_tab.dart';
-import 'package:campnotes/data/shared_preferences_storage.dart';
 import 'package:campnotes/widgets/stack_navigator_child.dart';
 import 'package:campnotes/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:todos_app_core/todos_app_core.dart';
+
+import '../data/network/fire_auth.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -37,8 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
           heroTag: null,
           key: ArchSampleKeys.addTodoFab,
           onPressed: () async {
-            SharedPreferencesStorage.deleteData("email").whenComplete(() =>
-                Navigator.of(context).pushNamed(ArchSampleRoutes.registration));
+            FireAuth.signOut().whenComplete(() =>
+                Navigator.of(context).pushNamed(ArchSampleRoutes.authSelector));
           },
           child: Icon(Icons.logout),
           tooltip: ArchSampleLocalizations.of(context).addTodo,
