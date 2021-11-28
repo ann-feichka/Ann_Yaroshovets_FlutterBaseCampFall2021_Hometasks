@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           key: ArchSampleKeys.addTodoFab,
           onPressed: () async {
             SharedPreferencesStorage.deleteData("email").whenComplete(() =>
-                Navigator.of(context).pushNamed(ArchSampleRoutes.registration));
+                Navigator.pushReplacementNamed(context, ArchSampleRoutes.registration));
           },
           child: Icon(Icons.logout),
           tooltip: ArchSampleLocalizations.of(context).addTodo,

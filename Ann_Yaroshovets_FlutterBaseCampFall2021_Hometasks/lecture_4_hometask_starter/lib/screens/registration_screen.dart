@@ -1,4 +1,5 @@
 import 'package:campnotes/data/shared_preferences_storage.dart';
+import 'package:campnotes/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todos_app_core/todos_app_core.dart';
@@ -13,6 +14,7 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  final _formKey = GlobalKey<FormState>();
   bool password = true;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -33,16 +35,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ),
             Form(
+              key: _formKey,
                 child: Column(
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 25.0, vertical: 15.0),
                   child: TextFormField(
+                    validator: (value) => Validator.validateEmail(email: _emailController.text),
                     controller: _emailController,
                     decoration: InputDecoration(
-                      // fillColor: kPrimaryColor.withOpacity(0.2),
-                      // hintStyle: TextStyle(color: kPrimaryColor),
                       labelStyle: TextStyle(fontSize: 18.0),
                       filled: true,
                       border: OutlineInputBorder(
@@ -59,11 +61,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 25.0, vertical: 15.0),
                   child: TextFormField(
+                    validator: (value) => Validator.validatePassword(password: value),
                     controller: _passwordController,
                     obscureText: password,
                     decoration: InputDecoration(
-                        // fillColor: kPrimaryColor.withOpacity(0.2),
-                        // hintStyle: TextStyle(color: kPrimaryColor),
                         labelStyle: TextStyle(fontSize: 18.0),
                         filled: true,
                         border: OutlineInputBorder(
@@ -88,17 +89,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () async {
+                      if(_formKey.currentState.validate())
+                    {
                       await SharedPreferencesStorage.init();
                       SharedPreferencesStorage.setData(
                           "email", _emailController.text);
                       SharedPreferencesStorage.setData(
                           "password", _passwordController.text);
                       SharedPreferencesStorage.setBool("token", true);
-                      String email =
-                          await SharedPreferencesStorage.getData("email");
-                      print(email);
-                      Navigator.pushNamed(context, ArchSampleRoutes.home);
-                    },
+                      Navigator.pushReplacementNamed(context, ArchSampleRoutes.home);
+                    }},
                     child: Text(ArchSampleLocalizations.of(context).signUp),
                     style: ButtonStyle(
                         shape:
