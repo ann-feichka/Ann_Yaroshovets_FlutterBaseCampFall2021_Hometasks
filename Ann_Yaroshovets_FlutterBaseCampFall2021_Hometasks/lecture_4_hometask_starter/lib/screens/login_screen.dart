@@ -1,8 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:todos_app_core/todos_app_core.dart';
-
 import '../data/network/fire_auth.dart';
 import '../validator.dart';
 
@@ -14,15 +11,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  Future<FirebaseApp> _initializeFirebase() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
-    User user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      Navigator.pushReplacementNamed(context, ArchSampleRoutes.home);
-    }
-    return firebaseApp;
-  }
-
   final _formKey = GlobalKey<FormState>();
   bool password = true;
   final _emailController = TextEditingController();
@@ -39,11 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
         .of(context)
         .primaryColor;
     return Scaffold(
-      body: FutureBuilder(
-          future: _initializeFirebase(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return Padding(
+      body: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: <Widget>[
@@ -72,8 +56,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Validator.validateEmail(email: value),
                                 controller: _emailController,
                                 decoration: InputDecoration(
-                                  // fillColor: kPrimaryColor.withOpacity(0.2),
-                                  // hintStyle: TextStyle(color: kPrimaryColor),
                                   labelStyle: TextStyle(fontSize: 18.0),
                                   filled: true,
                                   border: OutlineInputBorder(
@@ -99,7 +81,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 obscureText: password,
                                 decoration: InputDecoration(
                                     fillColor: borderColor,
-                                    // hintStyle: TextStyle(color: kPrimaryColor),
                                     labelStyle: TextStyle(fontSize: 18.0),
                                     filled: true,
                                     border: OutlineInputBorder(
@@ -132,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: ElevatedButton(
                                       onPressed: () async {
                                         if (_formKey.currentState.validate()) {
-                                          FireAuth
+                                          await FireAuth
                                               .signInUsingEmailPassword(
                                               email: _emailController.text,
                                               password: _passwordController.text
@@ -176,12 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-              );
-            }
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }),
+              )
     );
   }
 }

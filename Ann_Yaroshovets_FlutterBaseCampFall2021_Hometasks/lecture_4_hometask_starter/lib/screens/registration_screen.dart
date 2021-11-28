@@ -1,6 +1,5 @@
 import 'package:campnotes/data/network/fire_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todos_app_core/todos_app_core.dart';
@@ -17,11 +16,6 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  Future<FirebaseApp> _initializeFirebase() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
-    return firebaseApp;
-  }
-
   final _formKey = GlobalKey<FormState>();
   bool password = true;
   final _emailController = TextEditingController();
@@ -33,11 +27,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: FutureBuilder(
-            future: _initializeFirebase(),
-            builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Column(
+        child: Column(
               children: <Widget>[
                 Spacer(),
                 Padding(
@@ -152,12 +142,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   flex: 2,
                 ),
               ],
-            );
-          }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }),
+            )
       ),
     );
   }
