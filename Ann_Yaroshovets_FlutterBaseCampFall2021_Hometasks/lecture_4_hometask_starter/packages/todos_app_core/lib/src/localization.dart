@@ -32,6 +32,13 @@ class ArchSampleLocalizations {
         locale: locale.toString(),
       );
 
+  String get name => Intl.message(
+    'Name',
+    name: 'name',
+    args: [],
+    locale: locale.toString(),
+  );
+
   String get registration => Intl.message(
     'Registration',
     name: 'registration',

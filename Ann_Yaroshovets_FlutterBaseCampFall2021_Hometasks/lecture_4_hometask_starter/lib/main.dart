@@ -1,24 +1,24 @@
+import 'package:campnotes/screens/auth_type_selector_screen.dart';
 import 'package:campnotes/screens/login_screen.dart';
 import 'package:campnotes/screens/registration_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todos_app_core/todos_app_core.dart';
 import 'package:campnotes/localization.dart';
 import 'package:campnotes/screens/screens.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  final bool hasToken = await prefs.getBool("token");
+  await Firebase.initializeApp();
   runApp(
-    TodosApp(hasToken: hasToken != null,),
+    TodosApp(),
   );
 }
 
 class TodosApp extends StatefulWidget {
-  final bool hasToken;
 
-  const TodosApp({Key key, this.hasToken}) : super(key: key);
+  const TodosApp({Key key}) : super(key: key);
   @override
   State<TodosApp> createState() => _TodosAppState();
 }
@@ -27,14 +27,6 @@ class _TodosAppState extends State<TodosApp> {
   @override
   void initState() {
     super.initState();
-  }
-
-  String getInitialRouteString( bool hasToken) {
-    if (hasToken) {
-      return ArchSampleRoutes.login;
-    }else {
-      return ArchSampleRoutes.registration;
-    }
   }
   @override
   Widget build(BuildContext context) {
@@ -45,7 +37,7 @@ class _TodosAppState extends State<TodosApp> {
         ArchSampleLocalizationsDelegate(),
         FlutterBlocLocalizationsDelegate(),
       ],
-      initialRoute: getInitialRouteString(widget.hasToken),
+      initialRoute: ArchSampleRoutes.authSelector,
       routes: {
         ArchSampleRoutes.home: (context) {
           return HomeScreen();
@@ -62,6 +54,9 @@ class _TodosAppState extends State<TodosApp> {
   },
         ArchSampleRoutes.login: (context) {
           return LoginScreen();
+        },
+        ArchSampleRoutes.authSelector: (context) {
+          return AuthTypeSelectorScreen();
         },
 
       },

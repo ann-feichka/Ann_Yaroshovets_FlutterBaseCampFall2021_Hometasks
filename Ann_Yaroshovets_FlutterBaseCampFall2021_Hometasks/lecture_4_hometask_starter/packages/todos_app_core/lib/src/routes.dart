@@ -8,5 +8,6 @@ class ArchSampleRoutes {
   static final details = '/details';
   static final registration = '/registration';
   static final login = '/login';
+  static final authSelector = '/authSelector';
 
 }
