@@ -11,6 +11,11 @@ class ArchSampleKeys {
   static const snackbar = Key('__snackbar__');
   static Key snackbarAction(String id) => Key('__snackbar_action_${id}__');
 
+
+  // Login Screens
+  static const emailInput = Key('__emailInput__');
+  static const passwordInput = Key('__passwordInput__');
+
   // Todos
   static const todoList = Key('__todoList__');
   static const todosLoading = Key('__todosLoading__');

@@ -39,9 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
           key: ArchSampleKeys.addTodoFab,
           onPressed: () async {
             FireAuth.signOut().whenComplete(() =>
-                Navigator.of(context).pushNamed(ArchSampleRoutes.authSelector));
+                Navigator.of(context).pushNamed(ArchSampleRoutes.addTodo));
           },
-          child: Icon(Icons.logout),
+          child: Icon(Icons.add),
           tooltip: ArchSampleLocalizations.of(context).addTodo,
         ),
         body: Stack(
