@@ -67,6 +67,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 )),
             Spacer(),
             TextField(
+              key: ArchSampleKeys.noteField,
               controller: notesController,
               style: textTheme.subtitle1,
             ),

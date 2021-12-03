@@ -10,7 +10,7 @@ import 'package:campnotes/screens/screens.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   runApp(
     TodosApp(),
   );
@@ -37,7 +37,7 @@ class _TodosAppState extends State<TodosApp> {
         ArchSampleLocalizationsDelegate(),
         FlutterBlocLocalizationsDelegate(),
       ],
-      initialRoute: ArchSampleRoutes.authSelector,
+      initialRoute: ArchSampleRoutes.home,
       routes: {
         ArchSampleRoutes.home: (context) {
           return HomeScreen();

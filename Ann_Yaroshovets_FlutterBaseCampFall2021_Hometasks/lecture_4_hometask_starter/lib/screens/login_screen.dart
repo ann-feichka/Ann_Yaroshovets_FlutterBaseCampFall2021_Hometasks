@@ -52,6 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25.0, vertical: 15.0),
                               child: TextFormField(
+                                key: ArchSampleKeys.emailInput,
                                 validator: (value) =>
                                     Validator.validateEmail(email: value),
                                 controller: _emailController,
@@ -62,9 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(100.0)),
                                   ),
-                                  labelText: ArchSampleLocalizations
-                                      .of(context)
-                                      .email,
+                                  labelText: "Email",
                                   prefixIcon: Icon(
                                     Icons.email,
                                   ),
@@ -75,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25.0, vertical: 15.0),
                               child: TextFormField(
+                                key: ArchSampleKeys.passwordInput,
                                 validator: (value) =>
                                     Validator.validatePassword(password: value),
                                 controller: _passwordController,
@@ -122,9 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               context, ArchSampleRoutes.home);
                                         }
                                       },
-                                      child: Text(ArchSampleLocalizations
-                                          .of(context)
-                                          .login),
+                                      child: Text("Login"),
                                       style: ButtonStyle(
                                           shape:
                                           MaterialStateProperty.all<
