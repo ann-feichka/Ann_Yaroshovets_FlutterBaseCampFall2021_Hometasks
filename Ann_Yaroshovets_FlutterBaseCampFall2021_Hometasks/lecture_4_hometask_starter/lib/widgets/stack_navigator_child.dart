@@ -29,7 +29,7 @@ class StackNavigatorChild extends StatelessWidget {
               return MaterialPageRoute(
                 settings: settings,
                 builder: (_) {
-                  return TodosScreen();
+                  return TodosScreen(tab:tab);
                 },
               );
             }
