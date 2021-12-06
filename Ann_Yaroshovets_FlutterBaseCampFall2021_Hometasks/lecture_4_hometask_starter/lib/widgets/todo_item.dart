@@ -1,3 +1,4 @@
+import 'package:campnotes/bloc/models/app_tab.dart';
 import 'package:campnotes/data/models/todo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +9,14 @@ class TodoItem extends StatelessWidget {
   final GestureTapCallback onTap;
   final ValueChanged<bool> onCheckboxChanged;
   final Todo todo;
+  final AppTab tab;
 
   TodoItem({
     Key key,
     @required this.onDismissed,
     @required this.onTap,
     @required this.onCheckboxChanged,
-    @required this.todo,
+    @required this.todo, this.tab,
   }) : super(key: key);
 
   @override
@@ -30,7 +32,7 @@ class TodoItem extends StatelessWidget {
           onChanged: onCheckboxChanged,
         ),
         title: Hero(
-          tag: '${todo.id}__heroTag',
+          tag: '${todo.id}__heroTag${tab}',
           child: Container(
             width: MediaQuery.of(context).size.width,
             child: Text(

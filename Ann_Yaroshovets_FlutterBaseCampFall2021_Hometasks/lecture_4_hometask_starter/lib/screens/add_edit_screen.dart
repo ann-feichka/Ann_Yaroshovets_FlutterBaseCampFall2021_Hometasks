@@ -45,7 +45,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 10.0),
-        child: Column(
+        child: ListView(
           children: <Widget>[
             TextField(
               controller: titleController,
@@ -65,13 +65,9 @@ class _AddEditScreenState extends State<AddEditScreen> {
                     ),
                   ),
                 )),
-            Spacer(),
             TextField(
               controller: notesController,
               style: textTheme.subtitle1,
-            ),
-            Spacer(
-              flex: 3,
             ),
           ],
         ),

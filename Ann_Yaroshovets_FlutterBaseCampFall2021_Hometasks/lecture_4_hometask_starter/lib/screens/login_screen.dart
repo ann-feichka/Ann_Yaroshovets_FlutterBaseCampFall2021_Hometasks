@@ -27,21 +27,29 @@ class _LoginScreenState extends State<LoginScreen> {
         .of(context)
         .primaryColor;
     return Scaffold(
-      body: Padding(
+        body: OrientationBuilder(
+            builder: (context, orientation) {
+              return orientation == Orientation.portrait ? Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Column(
+                child: ListView(
                   children: <Widget>[
-                    Spacer(),
+                    SizedBox(height: MediaQuery
+                        .of(context)
+                        .size
+                        .longestSide / 6,),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 25.0),
-                      child: Text(
-                        ArchSampleLocalizations
-                            .of(context)
-                            .login,
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .headline4,
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          ArchSampleLocalizations
+                              .of(context)
+                              .login,
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .headline4,
+                        ),
                       ),
                     ),
                     Form(
@@ -107,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children:<Widget> [
+                              children: <Widget>[
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: ElevatedButton(
@@ -131,33 +139,205 @@ class _LoginScreenState extends State<LoginScreen> {
                                               RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(100.0))))),
+                                                  BorderRadius.circular(
+                                                      100.0))))),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: ElevatedButton(
                                       onPressed: () {
                                         Navigator.pushNamed(
-                                            context, ArchSampleRoutes.registration);
+                                            context,
+                                            ArchSampleRoutes.registration);
                                       },
                                       child: Text("Sign Up"),
                                       style: ButtonStyle(
                                           shape:
-                                          MaterialStateProperty.all<RoundedRectangleBorder>(
+                                          MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(100.0))))),
+                                                  BorderRadius.circular(
+                                                      100.0))))),
                                 ),
                               ],
                             ),
                           ],
                         )),
-                    Spacer(
-                      flex: 2,
+                  ],
+                ),
+              ) : Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: ListView(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          ArchSampleLocalizations
+                              .of(context)
+                              .login,
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .headline4,
+                        ),
+                      ),
+                    ),
+                    Form(
+                      key: _formKey,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: SizedBox(
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .longestSide / 3,
+                                    child: TextFormField(
+                                      validator: (value) =>
+                                          Validator.validateEmail(email: value),
+                                      controller: _emailController,
+                                      decoration: InputDecoration(
+                                        labelStyle: TextStyle(fontSize: 18.0),
+                                        filled: true,
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(100.0)),
+                                        ),
+                                        labelText: ArchSampleLocalizations
+                                            .of(context)
+                                            .email,
+                                        prefixIcon: Icon(
+                                          Icons.email,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: SizedBox(
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .longestSide / 3,
+                                    child: TextFormField(
+                                      validator: (value) =>
+                                          Validator.validatePassword(
+                                              password: value),
+                                      controller: _passwordController,
+                                      obscureText: password,
+                                      decoration: InputDecoration(
+                                          fillColor: borderColor,
+                                          labelStyle: TextStyle(fontSize: 18.0),
+                                          filled: true,
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                            BorderRadius.all(
+                                                Radius.circular(100.0)),
+                                          ),
+                                          labelText: ArchSampleLocalizations
+                                              .of(context)
+                                              .password,
+                                          prefixIcon: Icon(
+                                            Icons.lock,
+                                          ),
+                                          suffixIcon: IconButton(
+                                            icon: Icon(password
+                                                ? Icons.visibility
+                                                : Icons.visibility_off),
+                                            onPressed: () {
+                                              setState(() {
+                                                password = !password;
+                                              });
+                                            },
+                                          )),
+                                    ),
+                                  ),
+                                )
+                              ]),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: SizedBox(
+                                  height: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .shortestSide / 8,
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .longestSide / 4,
+                                  child: ElevatedButton(
+                                      onPressed: () async {
+                                        if (_formKey.currentState.validate()) {
+                                          await FireAuth
+                                              .signInUsingEmailPassword(
+                                              email: _emailController.text,
+                                              password: _passwordController.text
+                                          );
+                                          Navigator.pushReplacementNamed(
+                                              context, ArchSampleRoutes.home);
+                                        }
+                                      },
+                                      child: Text(ArchSampleLocalizations
+                                          .of(context)
+                                          .login),
+                                      style: ButtonStyle(
+                                          shape:
+                                          MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(
+                                                      100.0))))),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: SizedBox(
+                                  height: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .shortestSide / 8,
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .longestSide / 4,
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context,
+                                            ArchSampleRoutes.registration);
+                                      },
+                                      child: Text("Sign Up"),
+                                      style: ButtonStyle(
+                                          shape:
+                                          MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(
+                                                      100.0))))),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              )
+              );
+            }
+        )
     );
   }
 }
